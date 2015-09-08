@@ -16,7 +16,7 @@ G = G * (m2km**2.) * (m2Mpc) / (kg2Msun * Msun2Gadget) # (Mpc/h) (km/s)^2 / (1e1
 rho_crit_0 = 3.* H0**2 / (8.*pi*G)  # (1e10 Msun/h)/(Mpc/h)^3
 rho_m_0 = omegam*rho_crit_0
 overdensity = 200.0
-psdoc = "./PS/billennium_powspec.txt"
+psdoc = "PS/billennium_powspec.txt"
 ps = loadtxt(psdoc)
 ps = 10.**ps
 
@@ -107,6 +107,8 @@ def main(argv):
     zlist = arange(6.0,12.0,0.1)
     for t_m6 in m6:
         mz = mz_Correa2015(t_m6,z,zlist,boxsize)
+        plot(zlist,log10(mz))
+    show()
     return 0
 if __name__ == "__main__":
     main(sys.argv)
